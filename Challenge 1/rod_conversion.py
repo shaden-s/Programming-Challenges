@@ -1,5 +1,7 @@
 #PROJECT 1
-rods = float(input('Input Rods: '))
+def start():
+  rods = float(input('Input Rods: '))
+  return rods
 
 def metres(input):
   return input * 5.0292
@@ -29,5 +31,6 @@ def result(input):
   print(f'Furlongs: {furlong(input)}')
   print(f'Minutes to walk {input} rods: {avgwalk(input)}')
 
-result(rods)
+if __name__ == "__main__":
+  result(start())
   
