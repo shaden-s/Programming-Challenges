@@ -1,5 +1,5 @@
 #PROJECT 1
-def start():
+def rods():
   rods = float(input('Input Rods: '))
   return rods
 
@@ -32,5 +32,4 @@ def result(input):
   print(f'Minutes to walk {input} rods: {avgwalk(input)}')
 
 if __name__ == "__main__":
-  result(start())
-  
+  result(rods())
