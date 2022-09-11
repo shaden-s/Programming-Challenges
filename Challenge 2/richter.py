@@ -7,9 +7,9 @@ def tnt(k):
   return energy(k) / 4184000000
 
 def present(r):
-  print(f'\n{r}          {energy(r)}          {tnt(r)}\n')
+  print(f'\n{r:<12}{energy(r):<30}{tnt(r):<30}\n')
 
-print('\nRichter            Joules            TNT')
+print('\nRichter     Joules                        TNT')
 present(1)
 present(5)
 present(9.1)
@@ -17,4 +17,4 @@ present(9.2)
 present(9.5)
 
 
-print(f'Richter Value: {richter}\nEquivalence in Joules: {energy} \nEquivalence in tons of TNT: {tnt}')
+print(f'Richter Value: {richter}\nEquivalence in Joules: {energy(richter)} \nEquivalence in tons of TNT: {tnt(richter)}')
