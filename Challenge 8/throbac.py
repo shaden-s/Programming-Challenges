@@ -37,26 +37,28 @@ def numtorom(number):
   num = [1, 4, 5, 9, 10, 40, 50, 90,100, 400, 500, 900, 1000]
   sym = ["I", "IV", "V", "IX", "X", "XL","L", "XC", "C", "CD", "D", "CM", "M"]
   i = 12
-      
   while number:
     div = number // num[i]
     number %= num[i]
-  
     while div:
       letter += sym[i]
       div -= 1
     i -= 1
   return letter
 
+def present():
+	rom_one = input('Enter First Roman Number (no spaces): ').upper()
+	rom_two = input('Enter Second Roman Number (no spaces): ').upper()
+	
+	num_one = (romtonum(rom_one))
+	print(f'Value of {rom_one}: {num_one}')
+	num_two = (romtonum(rom_two))
+	print(f'Value of {rom_two}: {num_two}')
+	
+	ans = (num_one+num_two)
+	print(f'Digital Sum is: {ans}')
+	print(f'Roman Sum is: {numtorom(ans)}')
+
 if __name__ == "__main__":
-  rom_one = input('Enter First Roman Number (no spaces): ').upper()
-  rom_two = input('Enter Second Roman Number (no spaces): ').upper()
-  
-  num_one = (romtonum(rom_one))
-  print(f'Value of {rom_one}: {num_one}')
-  num_two = (romtonum(rom_two))
-  print(f'Value of {rom_two}: {num_two}')
-  
-  ans = (num_one+num_two)
-  print(f'Digital Sum is: {ans}')
-  print(f'Roman Sum is: {numtorom(ans)}')
+	present()
+
