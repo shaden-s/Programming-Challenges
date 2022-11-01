@@ -10,7 +10,7 @@ def filter(websitecontent):
         list.append(i)
   return list
 
-def extract(content):
+def extract(content,times):
   counter = 1
   list = []
   for count in range(times):
@@ -21,23 +21,27 @@ def extract(content):
     counter += 3#go onto the next artist line ,skipping the <div> lines and such
   return list
 
+def present():
+	URL = ('https://www.officialcharts.com/charts/singles-chart/')
+	page = requests.get(URL) #access website
+  
+	times = 10
+	soup = BeautifulSoup(page.content, 'html.parser')
+  
+	longtitle = soup.findAll("div", {"class": "title"}, limit=times) 
+	seperate = filter(longtitle)
+	songs = extract(seperate,times)
+	
+	longartist = soup.findAll("div", {"class": "artist"}, limit=times) 
+	aseperate = filter(longartist)
+	artists = extract(aseperate,times)
+	
+	date = datetime.date.today()
+	print(f"Top 10 Official Singles\nAs of {date}:")
+	for x in range(times):
+		print(f"{x + 1}. {songs[x]} - {artists[x]}")
+
+
 if __name__ == '__main__':
-  URL = ('https://www.officialcharts.com/charts/singles-chart/')
-  page = requests.get(URL) #access website
-  
-  times = 10
-  soup = BeautifulSoup(page.content, 'html.parser')
-  
-  longtitle = soup.findAll("div", {"class": "title"}, limit=times) 
-  seperate = filter(longtitle)
-  songs = extract(seperate)
-  
-  longartist = soup.findAll("div", {"class": "artist"}, limit=times) 
-  aseperate = filter(longartist)
-  artists = extract(aseperate)
-  
-  date = datetime.date.today()
-  print("Top 10 Official Singles")
-  print(f"As of {date}:")
-  for x in range(times):
-      print(f"{x + 1}. {songs[x]} - {artists[x]}")
+  present()
+
